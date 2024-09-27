@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính tổng các số lẻ từ 1 đến n</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        #ketQua {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+    <script>
+        function tinhTongLe() {
+            let n = parseInt(document.getElementById("soN").value);
+            let tong = 0;
+            for (let i = 1; i <= n; i += 2) {  // Lặp qua các số lẻ
+                tong += i;
+            }
+            document.getElementById("ketQua").innerText = "Tổng các số lẻ từ 1 đến " + n + " là: " + tong;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Tính tổng các số lẻ từ 1 đến n</h1>
+        <label for="soN">Nhập số n:</label>
+        <input type="number" id="soN" min="1" required>
+        <button onclick="tinhTongLe()">Tính tổng</button>
+        <p id="ketQua"></p>
+    </div>
+</body>
+</html>

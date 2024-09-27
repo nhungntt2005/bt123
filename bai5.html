@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm UCLN của 2 số</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            margin: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+            width: calc(100% - 22px);
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Tìm UCLN của 2 số</h1>
+    <div class="container">
+        <label for="numberA">Nhập số a:</label><br>
+        <input type="number" id="numberA" placeholder="Nhập số a" /><br>
+        
+        <label for="numberB">Nhập số b:</label><br>
+        <input type="number" id="numberB" placeholder="Nhập số b" /><br>
+        
+        <button onclick="tinhUCLN()">Tìm UCLN</button>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function tinhUCLN() {
+            const a = parseInt(document.getElementById('numberA').value);
+            const b = parseInt(document.getElementById('numberB').value);
+            let result = document.getElementById('result');
+
+            // Kiểm tra đầu vào có phải là số hợp lệ
+            if (isNaN(a) || isNaN(b)) {
+                result.textContent = "Vui lòng nhập hai số hợp lệ!";
+                result.style.color = "red";
+                return;
+            }
+
+            // Hàm tìm UCLN bằng thuật toán Euclid
+            function ucln(x, y) {
+                while (y !== 0) {
+                    let temp = y;
+                    y = x % y;
+                    x = temp;
+                }
+                return x;
+            }
+
+            const uclnResult = ucln(a, b);
+            result.textContent = "UCLN của " + a + " và " + b + " là: " + uclnResult;
+            result.style.color = "green";
+        }
+    </script>
+
+</body>
+</html>
